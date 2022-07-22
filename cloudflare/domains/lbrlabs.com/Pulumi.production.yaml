@@ -1,0 +1,5 @@
+config:
+  aws:allowedAccountIds: 
+  - 587571862190
+  cloudflare:apiToken:
+    secure: AAABANebMz2hnFS0Iph3ucV6yRPSSvXNiru7ZW6e8NP9zrZm3v40mwgQ5Ikiv/I7jzlWvi7UZHplENmXm86tKAK6PbLD2sEO
