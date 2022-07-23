@@ -1,4 +1,4 @@
-name: Deploy
+name: Check Permission
 on:
   push
 permissions:
@@ -19,6 +19,3 @@ jobs:
       - name:  Check permissions
         run: |
           aws sts get-caller-identity
-      - name: assume a role
-        run: |
-          aws sts assume-role --role-arn "arn:aws:iam::565485516070:role/infrastructure" --role-session-name github --duration-seconds 3600
