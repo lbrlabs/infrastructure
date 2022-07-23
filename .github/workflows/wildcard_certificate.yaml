@@ -16,6 +16,7 @@ jobs:
         with:
           node-version: 18.x
       - run: npm install
+        working-directory: wildcard_certificate
       - uses: pulumi/actions@v3
         with:
           command: up
