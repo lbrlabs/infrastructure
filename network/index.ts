@@ -5,14 +5,26 @@ import * as tgw from "./sharedTransitGateway";
 import * as vpc from "./transitGatewayAttachedVpc";
 
 const devProvider = new aws.Provider("dev", {
-  profile: "personal-development",
+  assumeRole: {
+    duration: "1h",
+    roleArn: "arn:aws:iam::565485516070:role/infrastructure",
+    sessionName: "lbrlabs",
+  },
 });
 const transitProvider = new aws.Provider("shared_services", {
-  profile: "personal-shared_services",
+  assumeRole: {
+    duration: "1h",
+    roleArn: "arn:aws:iam::587571862190 :role/infrastructure",
+    sessionName: "lbrlabs",
+  },
 });
 
 const prodProvider = new aws.Provider("prod", {
-  profile: "personal-production",
+  assumeRole: {
+    duration: "1h",
+    roleArn: "arn:aws:iam::780219548054 :role/infrastructure",
+    sessionName: "lbrlabs",
+  },
 });
 
 const transitGw = new tgw.SharedTransitGateway(
@@ -25,13 +37,13 @@ const transitGw = new tgw.SharedTransitGateway(
 );
 
 const transitVpc = new vpc.TransitGatewayAttachedVpc(
-    "transit",
-    {
-      cidrBlock: "172.20.0.0/22",
-      transitGatewayId: transitGw.transitGateway.id,
-    },
-    { provider: transitProvider, parent: transitProvider, dependsOn: transitGw }
-  );
+  "transit",
+  {
+    cidrBlock: "172.20.0.0/22",
+    transitGatewayId: transitGw.transitGateway.id,
+  },
+  { provider: transitProvider, parent: transitProvider, dependsOn: transitGw }
+);
 
 const devVpc = new vpc.TransitGatewayAttachedVpc(
   "dev",
@@ -50,4 +62,3 @@ const prodVpc = new vpc.TransitGatewayAttachedVpc(
   },
   { provider: prodProvider, parent: prodProvider, dependsOn: transitGw }
 );
-
