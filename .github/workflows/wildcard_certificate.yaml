@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+permissions:
+  id-token: write
+  contents: read
 jobs:
   up:
     name: Update
@@ -21,7 +24,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@master
         with:
           role-to-assume: ${{ secrets.ROLE_ARN }}
-          role-session-name: github
+          role-session-name: githubactions
           aws-region: us-west-2
       - uses: pulumi/actions@v3
         with:
