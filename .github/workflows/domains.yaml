@@ -10,7 +10,7 @@ permissions:
   id-token: write
   contents: read
 jobs:
-  leebriggs.co.uk:
+  leebriggs_co_uk:
     name: Update
     runs-on: ubuntu-latest
     steps:
@@ -36,7 +36,7 @@ jobs:
           work-dir: leebriggs.co.uk
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-  lbrlabs.com:
+  lbrlabs_com:
     name: Update
     runs-on: ubuntu-latest
     steps:
