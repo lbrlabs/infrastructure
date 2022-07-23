@@ -21,4 +21,4 @@ jobs:
           aws sts get-caller-identity
       - name: assume a role
         run: |
-          aws sts assume-role --role-arn "arn:aws:iam::565485516070:role/infrastructure --role-session-name github --duration-seconds 60
+          aws sts assume-role --role-arn "arn:aws:iam::565485516070:role/infrastructure" --role-session-name github --duration-seconds 60
