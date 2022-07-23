@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - main
-defaults:
-  run:
-    working-directory: domains
 permissions:
   id-token: write
   contents: read
@@ -22,7 +19,7 @@ jobs:
         with:
           node-version: 18.x
       - run: npm install
-        working-directory: leebriggs.co.uk
+        working-directory: domains/leebriggs.co.uk
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@master
         with:
@@ -33,7 +30,7 @@ jobs:
         with:
           command: up
           stack-name: production
-          work-dir: leebriggs.co.uk
+          work-dir: domains/leebriggs.co.uk
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
   lbrlabs_com:
@@ -48,7 +45,7 @@ jobs:
         with:
           node-version: 18.x
       - run: npm install
-        working-directory: lbrlabs.com
+        working-directory: domains/lbrlabs.com
       - name: configure aws credentials
         uses: aws-actions/configure-aws-credentials@master
         with:
@@ -59,6 +56,6 @@ jobs:
         with:
           command: up
           stack-name: production
-          work-dir: lbrlabs.com
+          work-dir: domains/lbrlabs.com
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
