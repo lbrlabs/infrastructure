@@ -14,7 +14,7 @@ const devProvider = new aws.Provider("dev", {
 const transitProvider = new aws.Provider("shared_services", {
   assumeRole: {
     duration: "1h",
-    roleArn: "arn:aws:iam::587571862190 :role/infrastructure",
+    roleArn: "arn:aws:iam::587571862190:role/infrastructure",
     sessionName: "lbrlabs",
   },
 });
@@ -22,7 +22,7 @@ const transitProvider = new aws.Provider("shared_services", {
 const prodProvider = new aws.Provider("prod", {
   assumeRole: {
     duration: "1h",
-    roleArn: "arn:aws:iam::780219548054 :role/infrastructure",
+    roleArn: "arn:aws:iam::780219548054:role/infrastructure",
     sessionName: "lbrlabs",
   },
 });
