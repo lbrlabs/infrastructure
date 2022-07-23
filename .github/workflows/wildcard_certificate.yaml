@@ -21,7 +21,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@master
         with:
           role-to-assume: ${{ secrets.ROLE_ARN }}
-          role-session-name: github/lbrlabs
+          role-session-name: github
           aws-region: us-west-2
       - uses: pulumi/actions@v3
         with:
