@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Configure an infrastructure admin role in every Org account.
+Resources:
+  AdministrationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: infrastructure
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: arn:aws:iam::587571862190:role/infrastructureAdmin-edeb222 # retrieve this don't hardcode 
+            Action:
+              - sts:AssumeRole
+            Condition:
+              StringEquals:
+                "aws:PrincipalOrgID": "o-fjlzoklj5f" # allow access from our org
+      Path: /
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/AdministratorAccess"
