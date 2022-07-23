@@ -17,6 +17,12 @@ jobs:
           node-version: 18.x
       - run: npm install
         working-directory: wildcard_certificate
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: ${{ secrets.ROLE_ARN }}
+          role-session-name: github/lbrlabs
+          aws-region: us-west-2
       - uses: pulumi/actions@v3
         with:
           command: up
