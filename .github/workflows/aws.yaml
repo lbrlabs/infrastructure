@@ -1,0 +1,21 @@
+name: Deploy
+on:
+  push
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  CheckAccess:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v2
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: ${{ secrets.ROLE_ARN }}
+          role-session-name: githubactions
+          aws-region: us-west-2
+      - name:  Check permissions
+        run: |
+          aws sts get-caller-identity

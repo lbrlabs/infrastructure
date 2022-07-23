@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@pulumi/github": "^4.14.0"
+  }
+}
