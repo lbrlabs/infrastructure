@@ -10,6 +10,7 @@ jobs:
   leebriggs_co_uk:
     name: Update
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: actions/checkout@v2
       - name: Install Pulumi CLI
@@ -36,6 +37,7 @@ jobs:
   lbrlabs_com:
     name: Update
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: actions/checkout@v2
       - name: Install Pulumi CLI

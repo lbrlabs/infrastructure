@@ -4,28 +4,54 @@ import * as awsx from "@pulumi/awsx";
 import * as tgw from "./sharedTransitGateway";
 import * as vpc from "./transitGatewayAttachedVpc";
 
-const devProvider = new aws.Provider("dev", {
-  assumeRole: {
-    duration: "1h",
-    roleArn: "arn:aws:iam::565485516070:role/infrastructure",
-    sessionName: "lbrlabs",
-  },
-});
-const transitProvider = new aws.Provider("shared_services", {
-  assumeRole: {
-    duration: "1h",
-    roleArn: "arn:aws:iam::587571862190:role/infrastructure",
-    sessionName: "lbrlabs",
-  },
-});
+// ensure we don't create resources in the wrong account
+let devConfig: aws.ProviderArgs = {
+  allowedAccountIds: ["565485516070"],
+};
+let transitConfig: aws.ProviderArgs = {
+  allowedAccountIds: ["587571862190"],
+};
+let prodConfig: aws.ProviderArgs = {
+  allowedAccountIds: ["780219548054"],
+};
 
-const prodProvider = new aws.Provider("prod", {
-  assumeRole: {
+const isInCi = process.env.CI;
+
+if (isInCi === "true") {
+  let assumeRole: aws.types.input.ProviderAssumeRole = {
     duration: "1h",
-    roleArn: "arn:aws:iam::780219548054:role/infrastructure",
     sessionName: "lbrlabs",
-  },
-});
+  };
+  devConfig = Object.assign({
+    assumeRole: (assumeRole = Object.assign({
+      roleArn: "arn:aws:iam::565485516070:role/infrastructure",
+    })),
+  });
+  transitConfig = Object.assign({
+    assumeRole: (assumeRole = Object.assign({
+      roleArn: "arn:aws:iam::587571862190:role/infrastructure",
+    })),
+  });
+  prodConfig = Object.assign({
+    assumeRole: (assumeRole = Object.assign({
+      roleArn: "arn:aws:iam::780219548054:role/infrastructure",
+    })),
+  });
+} else {
+  devConfig = Object.assign({
+    profile: "personal-development",
+  });
+  transitConfig = Object.assign({
+    profile: "personal-shared_services",
+  });
+  prodConfig = Object.assign({
+    profile: "personal-production",
+  });
+}
+
+const devProvider = new aws.Provider("dev", devConfig);
+const transitProvider = new aws.Provider("shared_services", transitConfig);
+const prodProvider = new aws.Provider("prod", prodConfig);
 
 const transitGw = new tgw.SharedTransitGateway(
   "tgw",
@@ -40,6 +66,7 @@ const transitVpc = new vpc.TransitGatewayAttachedVpc(
   "transit",
   {
     cidrBlock: "172.20.0.0/22",
+    numberOfNatGateways: 1,
     transitGatewayId: transitGw.transitGateway.id,
   },
   { provider: transitProvider, parent: transitProvider, dependsOn: transitGw }
