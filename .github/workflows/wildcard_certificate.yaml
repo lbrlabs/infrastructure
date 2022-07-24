@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'wildcard_certificate/**/*'
 permissions:
   id-token: write
   contents: read

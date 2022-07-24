@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'network/**/*'
 permissions:
   id-token: write
   contents: read
