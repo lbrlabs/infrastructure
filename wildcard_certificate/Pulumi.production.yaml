@@ -1,8 +1,0 @@
-config:
-  aws:allowedAccountIds: 
-  - "587571862190"
-  aws:assumeRole:
-    duration: "1h"
-    roleArn: "arn:aws:iam::587571862190:role/infrastructure"
-    sessionName: "lbrlabs"
-  aws:region: us-west-2

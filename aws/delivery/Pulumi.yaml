@@ -1,0 +1,6 @@
+name: aws_delivery
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: CI/CD OIDC Setup for AWS

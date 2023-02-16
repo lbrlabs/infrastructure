@@ -1,0 +1,7 @@
+config:
+  aws:allowedAccountIds:
+    - 565485516070
+  aws:region: us-west-2
+  github:owner: jaxxstorm
+  github:token:
+    secure: AAABAE6vY96mzh6OO8JvbpqC0yaVQ2g0vAOvtBEewuPTsa9+Z+JPRHNNm/qt/1MHXkC5aY4D7pVJ/0F3PZ66JXi2+Zac0E2O
