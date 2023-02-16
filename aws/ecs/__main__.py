@@ -55,6 +55,7 @@ log_group = aws.cloudwatch.LogGroup(
 """ container insights are important in prod
 but are expensive, so we need to make them configurable """
 if insights_enabled:
+    pulumi.log.debug("enabling container insights")
     cluster_settings = aws.ecs.ClusterSettingArgs(
         name="containerInsights",
         value="enabled",
@@ -64,7 +65,7 @@ else:
 
 cluster = aws.ecs.Cluster(
     f"ecs-{stack_name}",
-    settings=cluster_settings,
+    settings=[cluster_settings],
     configuration=aws.ecs.ClusterConfigurationArgs(
         execute_command_configuration=aws.ecs.ClusterConfigurationExecuteCommandConfigurationArgs(
             kms_key_id=key.arn,
