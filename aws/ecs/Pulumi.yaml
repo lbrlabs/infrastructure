@@ -1,0 +1,6 @@
+name: ecs
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Global ECS cluster for an account

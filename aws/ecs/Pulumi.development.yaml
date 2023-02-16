@@ -1,0 +1,5 @@
+config:
+  aws:region: us-west-2
+  aws:allowedAccountIds:
+  - 565485516070
+  ecs:log_retention: "2"
