@@ -1,4 +1,4 @@
-name: Pulumi up
+name: Pulumi AWS up
 on:
   push:
     branches:
@@ -14,7 +14,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   network:
-    name: Update ${{ matrix.stack.name}}
+    name: Update AWS ${{ matrix.stack.name}}
     runs-on: ubuntu-latest
     environment: ${{ matrix.stack.name }}
     strategy:
@@ -41,3 +41,9 @@ jobs:
       - name: Verify permissions
         run: |
           aws sts get-caller-identity
+      - name: Deploy AWS VPC
+        uses: pulumi/actions@v3
+        with:
+          command: up
+          stack-name: ${{ matrix.stack.name}}
+          work-dir: aws/vpc
