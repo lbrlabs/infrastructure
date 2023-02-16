@@ -1,0 +1,7 @@
+config:
+  aws:region: us-west-2
+  aws:allowedAccountIds:
+  - 565485516070
+  lbrlabs_vpc:cidrBlock: 10.1.0.0/16
+  lbrlabs_vpc:enableNatGateways: "false"
+  lbrlabs_vpc:numberOfAvailabilityZones: "3"
