@@ -29,6 +29,7 @@ const vpc = new awsx.ec2.Vpc(`${stack}-vpc`, {
     },
   ],
   numberOfAvailabilityZones: numberOfAvailabilityZones,
+  enableDnsHostnames: true,
   natGateways: {
     strategy: natGatewayStrategy,
   },
