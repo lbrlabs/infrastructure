@@ -1,3 +1,6 @@
-name: lbrlabs_vpc
-runtime: nodejs
-description: The VPCs for lbrlabs org
+name: vpc
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Global VPC for account
