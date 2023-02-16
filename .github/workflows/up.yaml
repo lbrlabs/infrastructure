@@ -41,9 +41,9 @@ jobs:
       - name: Verify permissions
         run: |
           aws sts get-caller-identity
-      - name: Deploy VPC
+      - name: Deploy AWS VPC
         uses: pulumi/actions@v3
         with:
           command: up
           stack-name: ${{ matrix.stack.name}}
-          work-dir: vpc
+          work-dir: aws/vpc
