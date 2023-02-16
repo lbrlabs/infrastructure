@@ -1,0 +1,7 @@
+config:
+  aws:allowedAccountIds:
+    - 780219548054
+  aws:region: us-west-2
+  tailscale:apiKey:
+    secure: AAABAPR5KbchH5QlrQc9WihKtljwQ/fjb3/GZ56GyM3icaXhwhoYVmNmlS0p5090GxpPUW7y/YlBYoq4TzJhUkEPWgT0E19ZJL9mruZYD+1NBrEpYZ3b
+  tailscale:tailnet: brig.gs

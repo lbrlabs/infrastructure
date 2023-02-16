@@ -1,0 +1,6 @@
+name: vpn
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Tailscale VPN for lbrlabs
