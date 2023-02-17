@@ -3,3 +3,4 @@ config:
   tailscale:apiKey:
     secure: AAABAGfZXw7OJ9a/LUQkb4TS4fWI6/62PjbuzOIAx5OCkJav//Yft8rLSZsXxRsFka3S91PaXoi6NjDLgqD+24Azg/LtdBLs9y4W51uV6LdlkZYA+dIq
   tailscale:tailnet: brig.gs
+  vpn:org: lbrlabs

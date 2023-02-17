@@ -1,12 +1,15 @@
 import pulumi
 import lbrlabs_pulumi_tailscalebastion as tailscale
 
-config = pulumi.Config("aws")
-region = config.require("region")
+awsconfig = pulumi.Config("aws")
+region = awsconfig.require("region")
+
+config = pulumi.Config()
+org = config.require("org")
 
 stack = pulumi.get_stack()
 
-vpc = pulumi.StackReference(f"jaxxstorm/vpc/{stack}")
+vpc = pulumi.StackReference(f"{org}/vpc/{stack}")
 vpc_id = vpc.require_output("vpc_id")
 subnet_ids = vpc.require_output("private_subnet_ids")
 cidr_block = vpc.require_output("cidr_block")
