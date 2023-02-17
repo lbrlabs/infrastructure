@@ -1,0 +1,6 @@
+name: loadbalancer
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Shared loadbalancer for an account

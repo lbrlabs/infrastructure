@@ -1,0 +1,10 @@
+config:
+  certificates:domains:
+    - brig.gs
+  aws:region: us-west-2
+  aws:allowedAccountIds:
+  - 780219548054
+  cloudflare:apiKey:
+    secure: AAABAA7u124/qVMnx+cff4N1+aSdwVEnnZblBQ+0Snhv2VaGcn98Tj48lS2Epu7I53Fd8/OhqQ9+anSN3fPKhd0y/x33
+  cloudflare:email:
+    secure: AAABAIrVwPe8+Ruz/MWqxkBfHeDqINtV3GH9w6xt0qtWIBNgn6D2HDu7pLmCHzxARxM0
