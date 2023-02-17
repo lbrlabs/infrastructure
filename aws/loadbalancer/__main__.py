@@ -4,13 +4,15 @@ import pulumi_aws as aws
 stack = pulumi.get_stack()
 config = pulumi.Config()
 internal = config.get_bool("internal") or False
+org = config.require("org")
+domain = config.require("domain")
 
-vpc = pulumi.StackReference(f"jaxxstorm/vpc/{stack}")
+vpc = pulumi.StackReference(f"{org}/vpc/{stack}")
 vpc_id = vpc.require_output("vpc_id")
 subnet_ids = vpc.require_output("public_subnet_ids")
 
-cert = pulumi.StackReference(f"jaxxstorm/certificates/{stack}")
-cert_arn = cert.require_output("brig.gs_cert_arn")
+cert = pulumi.StackReference(f"{org}/certificates/{stack}")
+cert_arn = cert.require_output(f"{domain}_cert_arn")
 
 
 security_group = aws.ec2.SecurityGroup(

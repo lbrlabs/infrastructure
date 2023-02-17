@@ -1,4 +1,4 @@
 config:
-  aws:region: us-west-2
   aws:allowedAccountIds:
-  - 565485516070
+    - 565485516070
+  aws:region: us-west-2

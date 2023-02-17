@@ -2,3 +2,5 @@ config:
   aws:region: us-west-2
   aws:allowedAccountIds:
   - 780219548054
+  loadbalancer:domain: brig.gs
+  loadbalancer:org: lbrlabs
