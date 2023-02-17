@@ -84,7 +84,7 @@ aws.ecs.ClusterCapacityProviders(
     capacity_providers=["FARGATE", "FARGATE_SPOT"],
     default_capacity_provider_strategies=[
         aws.ecs.ClusterCapacityProvidersDefaultCapacityProviderStrategyArgs(
-            base=1, weight=100, capacity_provider="FARGATE"
+            base=1, weight=100, capacity_provider="FARGATE_SPOT"
         )
     ],
     opts=pulumi.ResourceOptions(parent=cluster),

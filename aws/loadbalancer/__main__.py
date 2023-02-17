@@ -88,15 +88,13 @@ https = aws.lb.Listener(
     certificate_arn=cert_arn,
     default_actions=[
         aws.lb.ListenerDefaultActionArgs(
-            type="forward",
-            forward=aws.lb.ListenerDefaultActionForwardArgs(
-                target_groups=[
-                    aws.lb.ListenerDefaultActionForwardTargetGroupArgs(
-                        arn=target_group.arn
-                    )
-                ]
+            type="fixed-response",
+            fixed_response=aws.lb.ListenerDefaultActionFixedResponseArgs(
+                content_type="text/plain",
+                message_body="No content",
+                status_code="204",
             ),
-        ),
+        )
     ],
 )
 
