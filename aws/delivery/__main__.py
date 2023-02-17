@@ -9,7 +9,7 @@ stack_name = pulumi.get_stack()
 oidc_provider = aws.iam.OpenIdConnectProvider(
     "github",
     thumbprint_lists=["6938fd4d98bab03faadb97b34396831e3780aea1"],
-    client_id_lists=["sts.amazonaws.com", "https://github.com/jaxxstorm"],
+    client_id_lists=["sts.amazonaws.com", "https://github.com/lbrlabs"],
     url="https://token.actions.githubusercontent.com",
 )
 
@@ -27,7 +27,7 @@ role = aws.iam.Role(
                         "Effect": "Allow",
                         "Condition": {
                             "ForAllValues:StringLike": {
-                                "token.actions.githubusercontent.com:sub": "repo:jaxxstorm/*"  # allow access from all my repos
+                                "token.actions.githubusercontent.com:sub": "repo:lbrlabs/*"  # allow access from all my repos
                             }
                         },
                         "Principal": {"Federated": [arn]},
@@ -41,17 +41,17 @@ role = aws.iam.Role(
     ]
 )
 
-# # set the role name as a github secret
-# secret = github.ActionsOrganizationSecret(
-#     "role_name",
-#     secret_name=f"aws_oidc_{stack_name}_role_arn",
-#     plaintext_value=role.arn,
-#     visibility="all"
-# )
-
-secret = github.ActionsSecret(
+# set the role name as a github secret
+secret = github.ActionsOrganizationSecret(
     "role_name",
     secret_name=f"aws_oidc_{stack_name}_role_arn",
     plaintext_value=role.arn,
-    repository="lbrlabs",
+    visibility="all"
 )
+
+# secret = github.ActionsSecret(
+#     "role_name",
+#     secret_name=f"aws_oidc_{stack_name}_role_arn",
+#     plaintext_value=role.arn,
+#     repository="lbrlabs",
+# )

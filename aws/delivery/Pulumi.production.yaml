@@ -1,7 +1,7 @@
 config:
-  aws:allowedAccountIds:
-    - 780219548054
   aws:region: us-west-2
-  github:owner: jaxxstorm
+  aws:allowedAccountIds:
+  - 780219548054
+  github:owner: lbrlabs
   github:token:
-    secure: AAABALc+7DU6TSQkqo5m7DEDUUe0vjnEkufrR0YKVumQ2gxSDCUxUtyo05Y3VeW6FgQtFOH0qWaLsdVOF14uYFSGFSQ48sMp
+    secure: AAABADRWF4fRWCb1EO981d27Ug2mHMJXNOr82eoSqRAHtC70QTGp/aFQLjBYewEmLxEDPRL0UKKtLjTdo39EmVhdUcpXyx2H
