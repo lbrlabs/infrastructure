@@ -1,4 +1,4 @@
-name: ses
+name: aws_ses
 runtime:
   name: python
   options:
