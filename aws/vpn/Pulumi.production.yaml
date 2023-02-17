@@ -1,6 +1,6 @@
 config:
   aws:region: us-west-2
   tailscale:apiKey:
-    secure: AAABAGfZXw7OJ9a/LUQkb4TS4fWI6/62PjbuzOIAx5OCkJav//Yft8rLSZsXxRsFka3S91PaXoi6NjDLgqD+24Azg/LtdBLs9y4W51uV6LdlkZYA+dIq
+    secure: AAABAAOWaH7ScwnNE1wBR7btPEBZBs7upVu60vMt0NLcANtjXCRE/0E9WJbwboxxp5Ad9ORK9LHlGBJdbMA4Fdg9AKdPUX22JU7eRsnyCI7mrKmiEAH6
   tailscale:tailnet: brig.gs
-  vpn:org: lbrlabs
+  aws_vpn:org: lbrlabs

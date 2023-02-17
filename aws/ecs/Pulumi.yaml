@@ -1,4 +1,4 @@
-name: ecs
+name: aws_ecs
 runtime:
   name: python
   options:

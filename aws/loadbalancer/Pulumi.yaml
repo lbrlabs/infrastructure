@@ -1,4 +1,4 @@
-name: loadbalancer
+name: aws_loadbalancer
 runtime:
   name: python
   options:

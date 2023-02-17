@@ -1,4 +1,4 @@
-name: vpn
+name: aws_vpn
 runtime:
   name: python
   options:

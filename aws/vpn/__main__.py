@@ -9,7 +9,7 @@ org = config.require("org")
 
 stack = pulumi.get_stack()
 
-vpc = pulumi.StackReference(f"{org}/vpc/{stack}")
+vpc = pulumi.StackReference(f"{org}/aws_vpc/{stack}")
 vpc_id = vpc.require_output("vpc_id")
 subnet_ids = vpc.require_output("private_subnet_ids")
 cidr_block = vpc.require_output("cidr_block")

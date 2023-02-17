@@ -2,4 +2,4 @@ config:
   aws:region: us-west-2
   aws:allowedAccountIds:
   - 780219548054
-  ecs:enable_insights: "true"
+  aws_ecs:enable_insights: "true"

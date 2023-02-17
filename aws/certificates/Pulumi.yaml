@@ -1,4 +1,4 @@
-name: certificates
+name: aws_certificates
 runtime:
   name: python
   options:
