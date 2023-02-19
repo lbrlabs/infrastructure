@@ -9,7 +9,7 @@ enable_nat_gateway = config.require_bool("enable_nat_gateway")
 stack_name = pulumi.get_stack()
 
 if enable_nat_gateway:
-    nat_gateway_strategy = awsx.ec2.NatGatewayStrategy.ONE_PER_AZ
+    nat_gateway_strategy = awsx.ec2.NatGatewayStrategy.SINGLE
 else:
     nat_gateway_strategy = awsx.ec2.NatGatewayStrategy.NONE
 
