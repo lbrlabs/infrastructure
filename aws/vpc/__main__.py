@@ -29,6 +29,16 @@ vpc = awsx.ec2.Vpc(
     nat_gateways=awsx.ec2.NatGatewayConfigurationArgs(strategy=nat_gateway_strategy),
 )
 
+route_tables = aws.ec2.get_route_tables(
+    vpc_id=vpc.vpc_id,
+    tags={
+        "SubnetType": "Private",
+    },
+)
+
+
+
+pulumi.export("route_table_ids", route_tables)
 pulumi.export("vpc_id", vpc.vpc_id)
 pulumi.export("public_subnet_ids", vpc.public_subnet_ids)
 pulumi.export("private_subnet_ids", vpc.private_subnet_ids)
